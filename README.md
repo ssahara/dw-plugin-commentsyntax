@@ -24,6 +24,7 @@ a multi-line comment */
 ```
 
 More infomation is available: http://www.dokuwiki.org/plugin:commentsyntax
+
 ----
 Licensed under the GNU Public License (GPL) version 2
 
