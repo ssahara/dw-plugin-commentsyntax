@@ -5,7 +5,7 @@ Comment Syntax for DokuWiki
 * comment syntax has **priority** to `Doku_Parser_Mode_listblock`
 * support toolbar icon in the Edit window for encomment/uncomment selected source block.
 * (Optional) recognize correctly **nested 'C' style comments**, enclosed outmost pair of "`/*`" and "`*/`" become a comment.
-* (Optional) One-line style comment syntax "`//`" is available.
+* (Optional) **One-line style comment** syntax "`//`" is available.
 
 
 ```
@@ -23,5 +23,9 @@ a multi-line comment */
 */
 ```
 
+More infomation is available: http://www.dokuwiki.org/plugin:commentsyntax
 ----
 Licensed under the GNU Public License (GPL) version 2
+
+(c) 2014 Satoshi Sahara \<sahara.satoshi@gmail.com>
+
