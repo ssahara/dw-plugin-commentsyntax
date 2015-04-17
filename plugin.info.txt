@@ -1,7 +1,7 @@
 base   commentsyntax
 author Satoshi Sahara
 email  <sahara.satoshi@gmail.com>
-date   2014-09-01
+date   2015-04-17
 name   Comment Syntax support
 desc   syntax for using comments in wiki source
 url    https://www.dokuwiki.org/plugin:commentsyntax
