@@ -21,6 +21,9 @@ a multi-line comment */
 /* There is a comment /* in a comment */
 (nested comment)
 */
+
+~~ This is a comment. Convenient when temporally disabling macro eg. NOCACHE~~
+
 ```
 
 More infomation is available: http://www.dokuwiki.org/plugin:commentsyntax
