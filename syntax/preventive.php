@@ -12,8 +12,6 @@
 
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'syntax.php');
 
 /**
  * All DokuWiki plugins to extend the parser/rendering mechanism
@@ -36,5 +34,5 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler) { return ''; }
-    public function render($mode, Doku_Renderer $renderer, $data) { return true; }
+    public function render($format, Doku_Renderer $renderer, $data) { return true; }
 }
