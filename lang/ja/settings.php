@@ -3,7 +3,7 @@
  * Comment Syntax support for DokuWiki; plugin type extension
  * Japanese language for settings
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
-*/
+ */
 
 $lang['toolbar_button']     = 'ツールバーにコメント化ボタンを表示する';
 $lang['use_cstyle_nest']    = '入れ子の C-style コメント記法を使用する';
