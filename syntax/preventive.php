@@ -20,7 +20,7 @@ if(!defined('DOKU_INC')) die();
 class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
 
     protected $pluginMode;
-    protected $match_pattern = '~~\B.*?~~';
+    protected $match_pattern = '\B~~ [^\r\n]+?~~\B';
 
     public function __construct() {
         $this->pluginMode = substr(get_class($this), 7); // drop 'syntax_'
