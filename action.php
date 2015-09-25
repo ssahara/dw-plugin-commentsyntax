@@ -24,7 +24,7 @@ class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
         $event->data[] = array (
             'type' => 'toggleCommentBlock',
             'title' => $this->getLang('toolbar_title'),
-            'icon' => DOKU_BASE.'lib/plugins/commentsyntax/images/comment.png',
+            'icon' => DOKU_REL.'lib/plugins/commentsyntax/images/comment.png',
         );
     }
 }
