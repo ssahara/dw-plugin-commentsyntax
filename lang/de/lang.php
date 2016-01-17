@@ -4,4 +4,4 @@
  * German language file
  * @author Jens Pabel <info@geofreak.de>
  */
-$lang['toolbar_title'] = 'Kommentiere selektierten Text.';
+$lang['toolbar_title'] = 'Kommentiere selektierten Text';
