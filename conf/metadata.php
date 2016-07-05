@@ -7,3 +7,5 @@
 $meta['toolbar_button']     = array('onoff');
 $meta['use_cstyle_nest']    = array('onoff');
 $meta['use_oneline_style']  = array('onoff');
+
+$meta['scriptio_continua']  = array('onoff');
