@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax plugin for DokuWiki; oneline syntax component
  * One-line comments syntax component
  * Supports "one-line" comment syntax in Wiki source text.
  * The comment does not appear in the page, but visible when you edit the page.
@@ -18,11 +18,11 @@ if(!defined('DOKU_INC')) die();
  */
 class syntax_plugin_commentsyntax_oneline extends DokuWiki_Syntax_Plugin {
 
-    protected $pluginMode;
+    protected $mode;
     protected $match_pattern = '\s//(?:[^/\n]*|[^/\n]*/[^/\n]*)(?=\n)';
 
     public function __construct() {
-        $this->pluginMode = substr(get_class($this), 7); // drop 'syntax_'
+        $this->mode = substr(get_class($this), 7); // drop 'syntax_'
     }
 
     public function getType(){ return 'substition'; }
@@ -30,7 +30,7 @@ class syntax_plugin_commentsyntax_oneline extends DokuWiki_Syntax_Plugin {
 
     public function connectTo($mode) {
         if ($this->getConf('use_oneline_style')) {
-            $this->Lexer->addSpecialPattern($this->match_pattern, $mode, $this->pluginMode);
+            $this->Lexer->addSpecialPattern($this->match_pattern, $mode, $this->mode);
         }
     }
 

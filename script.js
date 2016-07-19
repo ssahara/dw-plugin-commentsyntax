@@ -1,5 +1,5 @@
 /*
- * Comment Syntax support for DokuWiki
+ * Comment Syntax plugin for DokuWiki
  * a toolbar button action to toggle encomment/uncomment selected text
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
