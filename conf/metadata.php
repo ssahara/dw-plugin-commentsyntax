@@ -1,6 +1,6 @@
 <?php
 /*
- * Comment Syntax plugin for DokuWiki;
+ * Comment Syntax plugin for DokuWiki
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax support for DokuWiki; preventive syntax component
  * preventive macro comment in Wiki source text.
  * 
  * Assume invalid macro directive caused by a typo error as a source comment

@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax plugin for DokuWiki
  * Japanese language for settings
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */

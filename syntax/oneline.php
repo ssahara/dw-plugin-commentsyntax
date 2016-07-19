@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax plugin for DokuWiki; oneline syntax component
  * One-line comments syntax component
  * Supports "one-line" comment syntax in Wiki source text.
  * The comment does not appear in the page, but visible when you edit the page.

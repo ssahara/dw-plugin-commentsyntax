@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax plugin for DokuWiki; cstyle syntax component
  * 'C' style comments syntax component
  * Supports 'C' style comment syntax in Wiki source text.
  * The comment does not appear in the page, but visible when you edit the page.

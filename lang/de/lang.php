@@ -1,6 +1,6 @@
 <?php
 /**
- * Comment Syntax support for DokuWiki; plugin type extension
+ * Comment Syntax plugin for DokuWiki
  * German language file
  * @author Jens Pabel <info@geofreak.de>
  */
