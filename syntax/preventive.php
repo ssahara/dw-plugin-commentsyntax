@@ -3,8 +3,8 @@
  * Comment Syntax support for DokuWiki; plugin type extension
  * preventive macro comment in Wiki source text.
  * 
- * Invalid macro directive caused by a typo error should not shown in the page,
- * eg. "~~NO CACHE~~" (correct sytax is "~~NOCACHE~~").
+ * Assume invalid macro directive caused by a typo error as a source comment
+ * in the page, eg. "~~NO CACHE~~" (correct sytax is "~~NOCACHE~~").
  * You may disable the directive temporary by intentional typo.
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
