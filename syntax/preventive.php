@@ -38,7 +38,7 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
         global $ID, $ACT;
         if ($ACT == 'preview') {
             return array($state, $match);
-        } else {
+        } else if ($this->getConf('log_invalid_macro')) {
             error_log($this->mode.': match='.$match.' |'.$ID);
         }
         return '';
