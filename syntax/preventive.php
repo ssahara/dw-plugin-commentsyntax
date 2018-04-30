@@ -21,7 +21,9 @@ if(!defined('DOKU_INC')) die();
 class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
-    protected $match_pattern = '~~[^\r\n]+?~~';
+    protected $pattern = array(
+            5 => '~~[^\r\n]+?~~',
+    );
 
     public function __construct() {
         $this->mode = substr(get_class($this), 7); // drop 'syntax_'
@@ -31,7 +33,7 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
     public function getSort(){ return 9999; } // very low priority
 
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern($this->match_pattern, $mode, $this->mode);
+        $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler) {

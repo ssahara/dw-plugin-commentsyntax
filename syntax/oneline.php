@@ -19,7 +19,9 @@ if(!defined('DOKU_INC')) die();
 class syntax_plugin_commentsyntax_oneline extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
-    protected $match_pattern = '\s//(?:[^/\n]*|[^/\n]*/[^/\n]*)(?=\n)';
+    protected $pattern = array(
+            5 => '\s//(?:[^/\n]*|[^/\n]*/[^/\n]*)(?=\n)',
+    );
 
     public function __construct() {
         $this->mode = substr(get_class($this), 7); // drop 'syntax_'
@@ -30,7 +32,7 @@ class syntax_plugin_commentsyntax_oneline extends DokuWiki_Syntax_Plugin {
 
     public function connectTo($mode) {
         if ($this->getConf('use_oneline_style')) {
-            $this->Lexer->addSpecialPattern($this->match_pattern, $mode, $this->mode);
+            $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
         }
     }
 

@@ -19,8 +19,10 @@ if(!defined('DOKU_INC')) die();
 class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
-    protected $entry_pattern = '\s/\*(?=.*?\*/)';
-    protected $exit_pattern  = '\*/';
+    protected $pattern = array(
+            1 => '/\*(?=.*?\*/)',
+            4 => '\*/',
+    );
 
     public function __construct() {
         $this->mode = substr(get_class($this), 7); // drop 'syntax_'
@@ -35,10 +37,10 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
     }
 
     public function connectTo($mode) {
-        $this->Lexer->addEntryPattern($this->entry_pattern, $mode, $this->mode);
+        $this->Lexer->addEntryPattern($this->pattern[1], $mode, $this->mode);
     }
     public function postConnect() {
-        $this->Lexer->addExitPattern($this->exit_pattern, $this->mode);
+        $this->Lexer->addExitPattern($this->pattern[4], $this->mode);
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler) { return ''; }
