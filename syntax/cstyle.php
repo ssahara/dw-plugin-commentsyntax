@@ -20,7 +20,7 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
     protected $pattern = array(
-            1 => '/\*(?=.*?\*/)',
+            1 => '[ \t]*\n?/\*(?=.*?\*/)',
             4 => '\*/',
     );
 
