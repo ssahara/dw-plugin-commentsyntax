@@ -29,7 +29,7 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
     }
 
     public function getType(){ return 'protected'; }
-    public function getSort(){ return 9; } // precedence of Doku_Parser_Mode_listblock priority (=10)
+    public function getSort(){ return 8; } // precedence of Doku_Parser_Mode_listblock priority (=10)
     // override default accept() method to allow nesting - ie, to get the plugin accept its own entry syntax
     public function accepts($mode) {
         if ($this->getConf('use_cstyle_nest') && $mode == $this->mode) return true;
