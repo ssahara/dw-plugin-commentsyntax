@@ -12,10 +12,6 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-/**
- * All DokuWiki plugins to extend the parser/rendering mechanism
- * need to inherit from this class
- */
 class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
@@ -29,13 +25,18 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
     }
 
     public function getType(){ return 'protected'; }
-    public function getSort(){ return 8; } // precedence of Doku_Parser_Mode_listblock priority (=10)
-    // override default accept() method to allow nesting - ie, to get the plugin accept its own entry syntax
+    public function getSort(){
+        return 8; // precedence of Doku_Parser_Mode_listblock priority (=10)
+    }
+
     public function accepts($mode) {
         if ($this->getConf('use_cstyle_nest') && $mode == $this->mode) return true;
         return parent::accepts($mode);
     }
 
+    /**
+     * Connect lookup pattern to lexer
+     */
     public function connectTo($mode) {
         $this->Lexer->addEntryPattern($this->pattern[1], $mode, $this->mode);
     }
@@ -43,6 +44,17 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addExitPattern($this->pattern[4], $this->mode);
     }
 
-    public function handle($match, $state, $pos, Doku_Handler $handler) { return ''; }
-    public function render($format, Doku_Renderer $renderer, $data) { return true; }
+    /**
+     * Handle the match
+     */
+    public function handle($match, $state, $pos, Doku_Handler $handler) {
+        return false;
+    }
+
+    /**
+     * Create output
+     */
+    public function render($format, Doku_Renderer $renderer, $data) {
+        return true;
+    }
 }
