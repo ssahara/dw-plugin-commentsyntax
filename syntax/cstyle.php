@@ -1,9 +1,14 @@
 <?php
 /**
  * Comment Syntax plugin for DokuWiki; cstyle syntax component
- * 'C' style comments syntax component
- * Supports 'C' style comment syntax in Wiki source text.
- * The comment does not appear in the page, but visible when you edit the page.
+ *
+ * A "comment" does not appear in the page, but visible when you edit the page.
+ * Supports both C style multi-line comments and one-line C++ style comments
+ *
+ * NOTE:
+ * One-line comments preceded by two slashes (//), may interfere with the markup
+ * for italics. The use of italic formatting markup will be restricted so that
+ * it can not go over next line.
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
@@ -18,6 +23,7 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
     protected $pattern = array(
             1 => '[ \t]*\n?/\*(?=.*?\*/)',
             4 => '\*/',
+            5 => '\s//(?:[^/\n]*|[^/\n]*/[^/\n]*)(?=\n)',
     );
 
     public function __construct() {
@@ -39,6 +45,10 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
      */
     public function connectTo($mode) {
         $this->Lexer->addEntryPattern($this->pattern[1], $mode, $this->mode);
+
+        if ($this->getConf('use_oneline_style')) {
+            $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
+        }
     }
     public function postConnect() {
         $this->Lexer->addExitPattern($this->pattern[4], $this->mode);
