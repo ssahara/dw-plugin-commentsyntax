@@ -14,13 +14,15 @@ class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
     /**
      * register the eventhandlers
      */
-    public function register(Doku_Event_Handler $controller){
+    function register(Doku_Event_Handler $controller) {
         if ($this->getConf('toolbar_button')) {
-            $controller->register_hook('TOOLBAR_DEFINE', 'AFTER', $this, 'handleToolbar');
+            $controller->register_hook(
+                'TOOLBAR_DEFINE', 'AFTER', $this, 'handleToolbar'
+            );
         }
     }
 
-    public function handleToolbar(Doku_Event $event, $param) {
+    function handleToolbar(Doku_Event $event) {
         $event->data[] = array (
             'type' => 'toggleCommentBlock',
             'title' => $this->getLang('toolbar_title'),

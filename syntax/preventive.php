@@ -14,43 +14,48 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-/**
- * All DokuWiki plugins to extend the parser/rendering mechanism
- * need to inherit from this class
- */
 class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
     protected $pattern = array(
-            5 => '~~[^\r\n]+?~~',
+            5 => '~~[^\R~]+~~',
     );
 
-    public function __construct() {
-        $this->mode = substr(get_class($this), 7); // drop 'syntax_'
+    function __construct() {
+        // syntax mode, drop 'syntax_' from class name
+        $this->mode = substr(get_class($this), 7);
     }
 
-    public function getType(){ return 'substition'; }
-    public function getSort(){ return 9999; } // very low priority
+    function getType(){ return 'substition'; }
+    function getSort(){ return 9999; } // very low priority
 
-    public function connectTo($mode) {
+    /**
+     * Connect lookup pattern to lexer
+     */
+    function connectTo($mode) {
         $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
     }
 
-    public function handle($match, $state, $pos, Doku_Handler $handler) {
+    /**
+     * Handle the match
+     */
+    function handle($match, $state, $pos, Doku_Handler $handler) {
         global $ID, $ACT;
         if ($ACT == 'preview') {
-            return array($state, $match);
+            return $data = $match;
         } else if ($this->getConf('log_invalid_macro')) {
             error_log($this->mode.': match='.$match.' |'.$ID);
         }
-        return '';
+        return false;
     }
 
-    public function render($format, Doku_Renderer $renderer, $data) {
+    /**
+     * Create output
+     */
+    function render($format, Doku_Renderer $renderer, $data) {
         global $ACT;
         if ($format == 'xhtml' && $ACT == 'preview') {
-            list($state, $match) = $data;
-            $renderer->doc .= $renderer->_xmlEntities($match);
+            $renderer->doc .= $renderer->_xmlEntities($data);
         }
         return true;
     }
