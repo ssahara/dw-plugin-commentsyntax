@@ -18,7 +18,7 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
     protected $pattern = array(
-            5 => '~~[^\R~]+~~',
+            5 => '~~[^\n~]+~~',
     );
 
     function __construct() {
