@@ -16,22 +16,23 @@ if(!defined('DOKU_INC')) die();
 
 class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
 
-    protected $mode;
-    protected $pattern = array(
-            5 => '~~[^\n~]+~~',
-    );
-
-    function __construct() {
-        // syntax mode, drop 'syntax_' from class name
-        $this->mode = substr(get_class($this), 7);
-    }
-
     function getType(){ return 'substition'; }
     function getSort(){ return 9999; } // very low priority
 
     /**
      * Connect lookup pattern to lexer
      */
+    protected $mode, $pattern;
+
+    function preConnect() {
+        // syntax mode, drop 'syntax_' from class name
+        $this->mode = substr(get_class($this), 7);
+        // syntax pattern
+        $this->pattern = [
+            5 => '~~[^\n~]+~~',
+        ];
+    }
+
     function connectTo($mode) {
         $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
     }
