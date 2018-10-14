@@ -6,13 +6,13 @@
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */
 
-// must be run within Dokuwiki
+// must be run within DokuWiki
 if(!defined('DOKU_INC')) die();
 
 class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
 
     /**
-     * register the eventhandlers
+     * Registers a callback function for a given event
      */
     function register(Doku_Event_Handler $controller) {
         if ($this->getConf('toolbar_button')) {
@@ -23,10 +23,10 @@ class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
     }
 
     function handleToolbar(Doku_Event $event) {
-        $event->data[] = array (
+        $event->data[] = [
             'type' => 'toggleCommentBlock',
             'title' => $this->getLang('toolbar_title'),
             'icon' => DOKU_REL.'lib/plugins/commentsyntax/images/comment.png',
-        );
+        ];
     }
 }
