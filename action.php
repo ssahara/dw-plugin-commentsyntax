@@ -7,14 +7,15 @@
  */
 
 // must be run within DokuWiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
-
+class action_plugin_commentsyntax extends DokuWiki_Action_Plugin
+{
     /**
      * Registers a callback function for a given event
      */
-    function register(Doku_Event_Handler $controller) {
+    public function register(Doku_Event_Handler $controller)
+    {
         if ($this->getConf('toolbar_button')) {
             $controller->register_hook(
                 'TOOLBAR_DEFINE', 'AFTER', $this, 'handleToolbar'
@@ -22,7 +23,8 @@ class action_plugin_commentsyntax extends DokuWiki_Action_Plugin {
         }
     }
 
-    function handleToolbar(Doku_Event $event) {
+    public function handleToolbar(Doku_Event $event)
+    {
         $event->data[] = [
             'type' => 'toggleCommentBlock',
             'title' => $this->getLang('toolbar_title'),

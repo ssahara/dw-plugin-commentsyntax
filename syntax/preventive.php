@@ -12,19 +12,27 @@
  */
 
 // must be run within DokuWiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin
+{
+    public function getType()
+    {   // Syntax Type
+        return 'substition';
+    }
 
-    function getType(){ return 'substition'; }
-    function getSort(){ return 9999; } // very low priority
+    public function getSort()
+    {   // sort number used to determine priority of this mode
+        return 9999; // very low priority
+    }
 
     /**
      * Connect lookup pattern to lexer
      */
     protected $mode, $pattern;
 
-    function preConnect() {
+    public function preConnect()
+    {
         // syntax mode, drop 'syntax_' from class name
         $this->mode = substr(get_class($this), 7);
         // syntax pattern
@@ -33,14 +41,16 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
         ];
     }
 
-    function connectTo($mode) {
+    public function connectTo($mode)
+    {
         $this->Lexer->addSpecialPattern($this->pattern[5], $mode, $this->mode);
     }
 
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler) {
+    public function handle($match, $state, $pos, Doku_Handler $handler)
+    {
         global $ID, $ACT;
         if ($ACT == 'preview') {
             return $data = $match;
@@ -53,7 +63,8 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($format, Doku_Renderer $renderer, $data) {
+    public function render($format, Doku_Renderer $renderer, $data)
+    {
         global $ACT;
         if ($format == 'xhtml' && $ACT == 'preview') {
             $renderer->doc .= $renderer->_xmlEntities($data);

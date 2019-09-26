@@ -15,12 +15,17 @@
  */
 
 // must be run within DokuWiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin
+{
+    public function getType()
+    {   // Syntax Type
+        return 'protected';
+    }
 
-    function getType(){ return 'protected'; }
-    function getSort(){
+    public function getSort()
+    {   // sort number used to determine priority of this mode
         return 8; // precedence of Doku_Parser_Mode_listblock priority (=10)
     }
 
@@ -29,7 +34,8 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
      */
     protected $mode, $pattern;
 
-    function preConnect() {
+    public function preConnect()
+    {
         // syntax mode, drop 'syntax_' from class name
         $this->mode = substr(get_class($this), 7);
         // syntax pattern
@@ -40,13 +46,15 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
         ];
     }
 
-    function accepts($mode) {
+    public function accepts($mode)
+    {   // plugin may accept its own entry syntax
         if ($this->getConf('use_cstyle_nest') && $mode == $this->mode) return true;
         return parent::accepts($mode);
     }
 
 
-    function connectTo($mode) {
+    public function connectTo($mode)
+    {
         $this->Lexer->addEntryPattern($this->pattern[1], $mode, $this->mode);
 
         if ($this->getConf('use_oneline_style')) {
@@ -54,21 +62,24 @@ class syntax_plugin_commentsyntax_cstyle extends DokuWiki_Syntax_Plugin {
         }
     }
 
-    function postConnect() {
+    public function postConnect()
+    {
         $this->Lexer->addExitPattern($this->pattern[4], $this->mode);
     }
 
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler) {
+    public function handle($match, $state, $pos, Doku_Handler $handler)
+    {
         return false;
     }
 
     /**
      * Create output
      */
-    function render($format, Doku_Renderer $renderer, $data) {
+    public function render($format, Doku_Renderer $renderer, $data)
+    {
         return true;
     }
 }
