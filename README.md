@@ -31,5 +31,5 @@ More infomation is available: http://www.dokuwiki.org/plugin:commentsyntax
 ----
 Licensed under the GNU Public License (GPL) version 2
 
-(c) 2014-2018 Satoshi Sahara \<sahara.satoshi@gmail.com>
+(c) 2014-2019 Satoshi Sahara \<sahara.satoshi@gmail.com>
 
