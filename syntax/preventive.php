@@ -10,10 +10,6 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */
-
-// must be run within DokuWiki
-if (!defined('DOKU_INC')) die();
-
 class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin
 {
     public function getType()
