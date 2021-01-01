@@ -26,10 +26,17 @@ a multi-line comment */
 
 ```
 
+* support HTML comment syntax: The HTML comment will not rendered by the browser, but can be viewed with “View source code” command.
+
+```
+<!-- This is a HTML comment -->
+```
+
+
 More infomation is available: http://www.dokuwiki.org/plugin:commentsyntax
 
 ----
 Licensed under the GNU Public License (GPL) version 2
 
-(c) 2014-2019 Satoshi Sahara \<sahara.satoshi@gmail.com>
+(c) 2014-2021 Satoshi Sahara \<sahara.satoshi@gmail.com>
 
