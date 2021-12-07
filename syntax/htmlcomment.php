@@ -14,13 +14,15 @@
  */
 class syntax_plugin_commentsyntax_htmlcomment extends DokuWiki_Syntax_Plugin
 {
+    /** syntax type */
     public function getType()
-    {   // Syntax Type
+    {
         return 'substition';
     }
 
+    /** sort number used to determine priority of this mode */
     public function getSort()
-    {   // sort number used to determine priority of this mode
+    {
         return 325;
     }
 
