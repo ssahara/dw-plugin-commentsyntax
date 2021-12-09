@@ -32,7 +32,7 @@ class syntax_plugin_commentsyntax_preventive extends DokuWiki_Syntax_Plugin
     public function preConnect()
     {
         // syntax mode, drop 'syntax_' from class name
-        $this->mode = substr(get_class($this), 7);
+        $this->mode = substr(__CLASS__, 7);
         // syntax pattern
         $this->pattern = [
             5 => '~~[^\n~]+~~',
